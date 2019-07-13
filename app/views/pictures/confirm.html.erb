@@ -2,8 +2,9 @@
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
   <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-  <%= form.hidden_field :image_cache, :size =>'300x300' %>
   <%= @picture.content %>
+  <%= form.hidden_field :image_cache, :size =>'300x300' %>
+  <%= form.hidden_field :content %>
   <%= form.submit "投稿する" %>
 <% end %>
 
