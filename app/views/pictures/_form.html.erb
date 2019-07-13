@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
+    <%= image_tag(@picture.image.url, :size =>'300x300') if @picture.image && @picture.image.url %>
     <%= form.label :画像選択 %>
-    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
     <%= form.label :コメント %>
