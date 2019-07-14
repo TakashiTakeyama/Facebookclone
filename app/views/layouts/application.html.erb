@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid bg-primary">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+          <span class="sr-only">Bootstrap</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">FaceBookClone
+
+        </a>
+      </div>
+      <div id="gnavi" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+            <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "アカウントを作成する", new_user_path %></li>
+            <li><%= link_to "ログインする", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <head>
-    <title>Facebookclone2</title>
+    <title>Facebookclone2 </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,18 +36,12 @@
   </head>
 
   <body>
+  <header>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
 
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "アカウントを作成する", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-
     <%= yield %>
+  </header>
   </body>
 </html>
