@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
 <p>
+  <p id="notice"><%= notice %></p>
   <strong>投稿記事:</strong>
   <%= image_tag @picture.image.url, :size =>'300x300' %>
   <%= @picture.content %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<%= link_to '記事を編集する', edit_picture_path(@picture) %> |
+<%= link_to '投稿記事一覧に戻る', pictures_path %>

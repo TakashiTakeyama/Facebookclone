@@ -14,11 +14,12 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    if params[:back]
+    if logged_in?.present? && params[:back]
       @picture = Picture.new(picture_params)
-    else
+    elsif logged_in?.present?
       @picture = Picture.new
-      # binding.pry
+    else
+      redirect_to new_session_path, notice: "ログインしてください。"
     end
   end
 
@@ -27,14 +28,18 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    # binding.pry
-    @picture = Picture.new(picture_params)
+    # @picture = Picture.new(picture_params)
+    # @picture.user_id = current_user.id
+    @picture = current_user.pictures.build(picture_params)
+    render :new if @picture.invalid?
   end
 
   # POST /pictures
   # POST /pictures.json
+  #
   def create
-    @picture = Picture.new(picture_params)
+    # @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
     respond_to do |format|
       if @picture.save
