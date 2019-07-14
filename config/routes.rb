@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     end
   end
   root to: 'sessions#new'
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
 end
