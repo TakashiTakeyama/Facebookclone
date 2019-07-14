@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :only_login_user_to_edit, only: [:edit,:destroy]
   # GET /pictures
   # GET /pictures.json
   def index
@@ -85,5 +85,12 @@ class PicturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
       params.require(:picture).permit(:content, :image, :image_cache)
+    end
+
+    def only_login_user_to_edit
+      if @picture.user_id == session[:user_id]
+      else
+        redirect_to pictures_path, notice: "他のユーザーが投稿した記事は変更できません。"
+      end
     end
 end
