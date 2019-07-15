@@ -1,3 +1,48 @@
 // Place all the styles related to the pictures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar-brand {
+  color: white;
+}
+
+#navname {
+  color: white;
+}
+
+.navbar {
+  background-color: #4267B2;
+  border: 0;
+  border-radius: 0;
+  height: 40px;
+  padding-left: 130px;
+}
+
+.container-fluid {
+  height: 40px;
+}
+
+#navbar {
+  height: 40px;
+}
+
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+input {
+  width: 480px;
+}
+
+
+input[type="submit"] {
+  text-align: center;
+  width: 100px;
+}
+
+
+h1 {
+  color: black;
+}
+

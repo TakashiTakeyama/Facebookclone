@@ -10,10 +10,12 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="container">
     <% @pictures.each do |picture| %>
       <tr>
-        <td><%= image_tag picture.image.url, size: :'300x300' %></td>
+        <p>
+          <td><%= image_tag picture.image.url, size: :'300x300' %></td>
+        </p>
         <td><%= picture.content %></td>
         <td><%= picture.user.name %></td>
 
