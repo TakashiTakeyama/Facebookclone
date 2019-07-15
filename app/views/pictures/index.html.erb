@@ -13,7 +13,7 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        <td><%= image_tag picture.image.url, :size =>'300x300' %></td>
+        <td><%= image_tag picture.image.url, size: :'300x300' %></td>
         <td><%= picture.content %></td>
         <td><%= picture.user.name %></td>
 
